@@ -59,6 +59,10 @@ var createTaskEl = function(taskDataObj) {
   tasks.push(taskDataObj);
   // increase task counter for next unique id
   taskIdCounter++;
+
+  var saveTasks = function() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 };
 
 var createTaskActions = function(taskId) {
@@ -114,6 +118,9 @@ var completeEditTask = function(taskName, taskType, taskId) {
           tasks[i].name = taskName;
           tasks[i].type = taskType;
       }
+      var saveTasks = function() {
+        localStorage.setItem("tasks", tasks);
+    }
   };
 
   alert("Task Updated!");
@@ -162,6 +169,9 @@ var taskStatusChangeHandler = function(event) {
           tasks[i].status = statusValue;
       }
   }
+  var saveTasks = function() {
+    localStorage.setItem("tasks", tasks);
+}
 };
 
 var editTask = function(taskId) {
@@ -205,6 +215,10 @@ var deleteTask = function(taskId) {
   }
   // reassign tasks array to be the same as updatedTaskArr
   tasks = updatedTaskArr;
+
+  var saveTasks = function() {
+    localStorage.setItem("tasks", tasks);
+}
 };
 
 // Create a new task
@@ -221,4 +235,8 @@ var taskDataObj = {
     name: "Add localStorage persistence",
     type: "Web",
     status: "in progress"
+}
+
+var saveTasks = function() {
+    localStorage.setItem("tasks", tasks);
 }
